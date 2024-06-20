@@ -1,0 +1,8 @@
+// Reconaissance - Directory Bruteforce based in User-Agent
+
+let User-Agent = externaldata(IPAddress: string)
+	[@""] with (format="txt");
+CommonSecurityLog
+| where AdditionalExtensions contains "User-Agent:+gobuster/3.6"
+| where DeviceAction !has "deny"
+| project SourceIP, DeviceAction, DestinationHostName, RequestMethod, RequestURL, DestinationPort
